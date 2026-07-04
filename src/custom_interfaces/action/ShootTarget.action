@@ -1,0 +1,6 @@
+---
+bool shot
+---
+bool target_found
+bool target_locked
+float64 distance

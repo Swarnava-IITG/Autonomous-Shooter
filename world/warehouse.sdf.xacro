@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<sdf version="1.8" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <!-- =================================================================== -->
+  <!-- GLOBAL SCALE PARAMETER -->
+  <!-- Change this value to adjust the entire warehouse footprint size.    -->
+  <!-- 1.0 = Full Size (approx 32m x 16m)                                  -->
+  <!-- 0.6 = Reduced Size (Highly recommended if the map feels too big)    -->
+  <!-- =================================================================== -->
+  <xacro:property name="scale" value="0.6" />
+
+  <world name="warehouse_scaled">
+    
+    <!-- Physics Engine Settings -->
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <!-- Global Light Source -->
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- Ground Plane -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>${100 * scale} ${100 * scale}</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>${100 * scale} ${100 * scale}</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Perfectly Aligned & Scaled Warehouse Walls -->
+    <model name="warehouse_structure">
+      <static>true</static>
+      
+      <link name="north_wall">
+        <pose>0 ${8 * scale} 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>${16 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${16 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="west_wall">
+        <pose>${-8 * scale} 0 1.25 0 0 1.57079632679</pose>
+        <collision name="col"><geometry><box><size>${16 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${16 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="east_wall">
+        <pose>${8 * scale} 0 1.25 0 0 1.57079632679</pose>
+        <collision name="col"><geometry><box><size>${16 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${16 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="south_wall_left">
+        <pose>${-5 * scale} ${-8 * scale} 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>${6 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${6 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="south_wall_right">
+        <pose>${5 * scale} ${-8 * scale} 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>${6 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${6 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="dock_left_wall">
+        <pose>${-2 * scale} ${-10 * scale} 1.25 0 0 1.57079632679</pose> 
+        <collision name="col"><geometry><box><size>${4 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${4 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="dock_right_wall">
+        <pose>${2 * scale} ${-10 * scale} 1.25 0 0 1.57079632679</pose> 
+        <collision name="col"><geometry><box><size>${4 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${4 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="dock_back_wall">
+        <pose>0 ${-12 * scale} 1.25 0 0 0</pose> 
+        <collision name="col"><geometry><box><size>${4.2 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${4.2 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="narrow_corridor_wall">
+        <pose>${-6.6 * scale} 0 1.25 0 0 1.57079632679</pose>
+        <collision name="col"><geometry><box><size>${12 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${12 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+      
+      <link name="inner_left_horizontal">
+        <pose>${-3.3 * scale} ${4 * scale} 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>${6.4 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${6.4 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="inner_right_vertical">
+        <pose>${3 * scale} ${1 * scale} 1.25 0 0 1.57079632679</pose>
+        <collision name="col"><geometry><box><size>${10 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${10 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="inner_right_horizontal">
+        <pose>${5.5 * scale} ${-4 * scale} 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>${5 * scale} ${0.2 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${5 * scale} ${0.2 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+      <link name="center_island">
+        <pose>0 0 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>${2 * scale} ${1.5 * scale} 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>${2 * scale} ${1.5 * scale} 2.5</size></box></geometry></visual>
+      </link>
+
+    </model>
+  </world>
+</sdf>

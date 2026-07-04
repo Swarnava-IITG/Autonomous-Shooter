@@ -1,0 +1,206 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="warehouse_scaled">
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>60.0 60.0</size></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>60.0 60.0</size></plane></geometry>
+          <material><ambient>0.8 0.8 0.8 1</ambient><diffuse>0.8 0.8 0.8 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="warehouse_structure">
+      <static>true</static>
+      <link name="north_wall">
+        <pose>0 4.8 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>9.6 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>9.6 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="west_wall">
+        <pose>-4.8 0 1.25 0 0 1.57079632679</pose>
+        <collision name="col"><geometry><box><size>9.6 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>9.6 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="east_wall">
+        <pose>4.8 0 1.25 0 0 1.57079632679</pose>
+        <collision name="col"><geometry><box><size>9.6 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>9.6 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="south_wall_left">
+        <pose>-3.0 -4.8 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>3.5999999999999996 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>3.5999999999999996 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="south_wall_right">
+        <pose>3.0 -4.8 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>3.5999999999999996 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>3.5999999999999996 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="dock_left_wall">
+        <pose>-1.2 -6.0 1.25 0 0 1.57079632679</pose>
+        <collision name="col"><geometry><box><size>2.4 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>2.4 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="dock_right_wall">
+        <pose>1.2 -6.0 1.25 0 0 1.57079632679</pose>
+        <collision name="col"><geometry><box><size>2.4 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>2.4 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="dock_back_wall">
+        <pose>0 -7.199999999999999 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>2.52 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>2.52 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="narrow_corridor_wall">
+        <pose>-3.46 0 1.25 0 0 1.57079632679</pose>
+        <collision name="col"><geometry><box><size>7.2 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>7.2 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="inner_left_horizontal">
+        <pose>-1.48 2.4 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>3.84 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>3.84 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="inner_right_vertical">
+        <pose>1.7999999999999998 0.6 1.25 0 0 1.57079632679</pose>
+        <collision name="col"><geometry><box><size>6.0 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>6.0 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="inner_right_horizontal">
+        <pose>3.3 -2.4 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>3.0 0.12 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>3.0 0.12 2.5</size></box></geometry></visual>
+      </link>
+      <link name="center_island">
+        <pose>0 0 1.25 0 0 0</pose>
+        <collision name="col"><geometry><box><size>1.2 0.8999999999999999 2.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>1.2 0.8999999999999999 2.5</size></box></geometry></visual>
+      </link>
+    </model>
+
+    <model name="target_pillar_1">
+      <static>true</static>
+      <pose>-2.5 -2.5 0 0 0 0</pose>
+      <link name="pillar">
+        <pose>0 0 0.5 0 0 0</pose>
+        <collision name="col"><geometry><cylinder><radius>0.2</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="vis">
+          <geometry><cylinder><radius>0.2</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.5 0.5 0.5 1</ambient><diffuse>0.5 0.5 0.5 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="target_sphere_1">
+      <static>false</static>
+      <pose>-2.5 -2.5 1.15 0 0 0</pose>
+      <link name="sphere_link">
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.0045</ixx><iyy>0.0045</iyy><izz>0.0045</izz>
+            <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="col"><geometry><sphere><radius>0.15</radius></sphere></geometry></collision>
+        <visual name="vis">
+          <geometry><sphere><radius>0.15</radius></sphere></geometry>
+          <material>
+            <ambient>0.0 0.0 1.0 1.0</ambient> <diffuse>0.0 0.0 1.0 1.0</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="target_pillar_2">
+      <static>true</static>
+      <pose>3.0 3.0 0 0 0 0</pose>
+      <link name="pillar">
+        <pose>0 0 0.5 0 0 0</pose>
+        <collision name="col"><geometry><cylinder><radius>0.2</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="vis">
+          <geometry><cylinder><radius>0.2</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.5 0.5 0.5 1</ambient><diffuse>0.5 0.5 0.5 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="target_sphere_2">
+      <static>false</static>
+      <pose>3.0 3.0 1.15 0 0 0</pose>
+      <link name="sphere_link">
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.0045</ixx><iyy>0.0045</iyy><izz>0.0045</izz>
+            <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="col"><geometry><sphere><radius>0.15</radius></sphere></geometry></collision>
+        <visual name="vis">
+          <geometry><sphere><radius>0.15</radius></sphere></geometry>
+          <material>
+            <ambient>0.0 0.6 1.0 1.0</ambient> <diffuse>0.0 0.6 1.0 1.0</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="target_pillar_3">
+      <static>true</static>
+      <pose>-2.5 3.5 0 0 0 0</pose>
+      <link name="pillar">
+        <pose>0 0 0.5 0 0 0</pose>
+        <collision name="col"><geometry><cylinder><radius>0.2</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="vis">
+          <geometry><cylinder><radius>0.2</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.5 0.5 0.5 1</ambient><diffuse>0.5 0.5 0.5 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="target_sphere_3">
+      <static>false</static>
+      <pose>-2.5 3.5 1.15 0 0 0</pose>
+      <link name="sphere_link">
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.0045</ixx><iyy>0.0045</iyy><izz>0.0045</izz>
+            <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="col"><geometry><sphere><radius>0.15</radius></sphere></geometry></collision>
+        <visual name="vis">
+          <geometry><sphere><radius>0.15</radius></sphere></geometry>
+          <material>
+            <ambient>0.0 0.0 0.6 1.0</ambient> <diffuse>0.0 0.0 0.6 1.0</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
