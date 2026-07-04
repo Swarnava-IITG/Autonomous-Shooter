@@ -294,7 +294,7 @@ class TargetPerceptor(Node):
         self.finding_target = False
 
         goal_handle.succeed()
-        response.shot = True
+        response.shot = target_shot
         return response
     
     def pid_pan_tilt(self, current_x, target_x, current_y, target_y):
