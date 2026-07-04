@@ -2,6 +2,12 @@
 
 An advanced autonomous robotics simulation built with ROS 2 (Humble) and Gazebo (Ignition). This project features a custom mobile robot that uses `Nav2` to autonomously navigate a warehouse environment, lock onto targets using camera and image processing (cv2) , and fire physical projectiles calculated via 3D kinematics.
 
+## 🎥 Demonstration Video
+
+https://github.com/user-attachments/assets/2740177c-4218-49c3-865b-169265c9b60e
+
+---
+
 ## 🚀 Key Features
 
 * **Autonomous Navigation (Nav2):** Uses the `BasicNavigator` API to dispatch the robot to sequential waypoints (Pickup, Dropoff, Dock) across a mapped warehouse environment.
@@ -107,3 +113,4 @@ Launch the main mission script. The Nav2 commander will sequentially drive the r
 ```bash
 ros2 run robot_setup warehouse_mission
 ```
+
